@@ -1,0 +1,27 @@
+mkdir test-project;
+
+cd test-project;
+
+cat <<EOF > index.html
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>My Web App</title>
+</head>
+<body>
+    <h1>Hello from Kenchik</h1>
+</body>
+</html>
+EOF;
+
+FROM nginx:alpine
+
+COPY index.html /usr/share/nginx/html/index.html;
+
+docker build -t my-web-app:latest .
+
+docker run -d \
+  --name my-web-app \
+  -p 8080:80 \
+  my-web-app:latest
