@@ -1,0 +1,12 @@
+1) Для сохранения незакоммиченных изменений использую stash
+git stash push -m "fix later" или wip
+2) Переключаюсь на ветку main/master, фикшу баг, ревью и мердж
+git checkout main
+# пофиксил баг
+git add .
+git commit -m "Fix critical bug"
+3) Переключаюсь обратно в свою ветку, бэкаю statsh т заканчиваю работу
+git checkout feature/junior-task
+git stash pop
+4) Для переименовывания последнего коммита в гите используется команда git commit --amend и можно добавить ключ -m для указания имени коммита в командной строке
+git commit --amend -m "rename"
