@@ -1,7 +1,11 @@
+# Все команды выполнены по отдельности и отделены между собой символами;
+# Создаём директорию для проекта
 mkdir test-project;
 
+# Переходим в созданную директорию
 cd test-project;
 
+# Создаём index.html
 cat <<EOF > index.html
 <!DOCTYPE html>
 <html>
@@ -14,13 +18,15 @@ cat <<EOF > index.html
 </body>
 </html>
 EOF;
+# Создаём Dockerfile указаным содержимым 
 
 FROM nginx:alpine
 
 COPY index.html /usr/share/nginx/html/index.html;
-
+# Собираем образ
 docker build -t my-web-app:latest .
 
+# Запускаем контейнер
 docker run -d \
   --name my-web-app \
   -p 8080:80 \
